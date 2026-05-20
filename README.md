@@ -16,7 +16,7 @@
 
 <br />
 
-**[Demo local](http://localhost:5174)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)**
+**[Ver demo en vivo](https://once-countdown.vercel.app)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)** · [Demo local](http://localhost:5174)
 
 <br />
 
@@ -48,7 +48,8 @@ Inspirado en la energía del tour **THIS IS FOR**, con UI glassmorphism, orbes a
 |--------|---------|
 | Countdown hero al evento destacado + stats del tour | Listado, filtros, buscador, CRUD y formulario por pestañas |
 
-> Tras clonar el repo y arrancar en local, abre **http://localhost:5174** para ver la UI completa.
+> **Produccion:** https://once-countdown.vercel.app — abre el enlace y listo, sin instalar nada.  
+> En local: clona el repo y abre **http://localhost:5174** (API en `:3001`).
 
 ---
 
@@ -247,16 +248,14 @@ Documentación del cliente: [`docs/api-client.md`](docs/api-client.md).
 
 ---
 
-## ☁️ Deploy en Vercel
+## ☁️ Demo en produccion
 
-1. Fork o importa **[BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown)** en [Vercel](https://vercel.com).
-2. El `vercel.json` ya configura build + API serverless.
-3. Comprueba tras el deploy:
-   - `/` — UI
-   - `/api/v1/health` — health check
-   - `/eventos` — CRUD
+| Enlace | Uso |
+|--------|-----|
+| **https://once-countdown.vercel.app** | App (countdown + eventos) |
+| https://once-countdown.vercel.app/api/v1/health | Comprobar API |
 
-Guía paso a paso: [`docs/deployment.md`](docs/deployment.md).
+Para desplegar tu fork: importa **[BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown)** en [Vercel](https://vercel.com) (el `vercel.json` ya esta listo). Guia: [`docs/deployment.md`](docs/deployment.md).
 
 > Los datos están **en memoria**. Un cold start en Vercel puede reiniciar el seed (comportamiento esperado en demo).
 
@@ -293,7 +292,7 @@ curl http://localhost:3001/api/v1/health
 
 <div align="center">
 
-**¿Eres ONCE?** Clona el repo, levanta las dos terminales y no te pierdas la próxima parada del tour.
+**¿Eres ONCE?** [Abre la demo](https://once-countdown.vercel.app) o clona el repo y levanta las dos terminales en local.
 
 💗 *THIS IS FOR — World Tour Hub*
 

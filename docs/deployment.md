@@ -1,5 +1,12 @@
 # Despliegue Vercel
 
+## URL de produccion (compartir en Git / entregas)
+
+- **App:** https://once-countdown.vercel.app
+- **Health API:** https://once-countdown.vercel.app/api/v1/health
+
+Usa solo el dominio `once-countdown.vercel.app`. Los enlaces largos con `git-main` o hash del deploy son internos de Vercel.
+
 ## Configuracion
 
 El `vercel.json` de la raiz:
@@ -16,13 +23,6 @@ El `vercel.json` de la raiz:
 
 ## Verificacion
 
-- `/` — countdown THIS IS FOR
-- `/api/v1/health` — `{ "status": "ok" }`
-- `/eventos` — CRUD
-
-## URL produccion
-
-Anota aqui tras el primer deploy:
-
-- **App:** `https://________________.vercel.app`
-- **Health:** `https://________________.vercel.app/api/v1/health`
+- https://once-countdown.vercel.app/ — countdown THIS IS FOR
+- https://once-countdown.vercel.app/api/v1/health — `{ "status": "ok" }`
+- https://once-countdown.vercel.app/eventos — CRUD y buscador
