@@ -22,7 +22,13 @@ export default function App() {
             <Route
               path="*"
               element={
-                <Suspense fallback={<p className="text-white/50">Cargando...</p>}>
+                <Suspense
+                  fallback={
+                    <div className="glass-for panel-pad-fluid flex min-h-[160px] items-center justify-center rounded-[var(--radius-md)]">
+                      <p className="loading-pulse text-white/50">Cargando...</p>
+                    </div>
+                  }
+                >
                   <NotFoundPage />
                 </Suspense>
               }

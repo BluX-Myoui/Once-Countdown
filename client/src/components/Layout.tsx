@@ -1,26 +1,31 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `rounded-full px-4 py-2 text-sm font-semibold transition ${
-    isActive
-      ? 'bg-[var(--color-for-pink)] text-white shadow-lg shadow-[var(--color-for-pink)]/30'
-      : 'text-[var(--color-for-cream)]/80 hover:bg-white/10'
+  `nav-pill btn-nav-fluid rounded-full font-semibold ${
+    isActive ? 'nav-pill--active text-white' : 'text-[var(--color-for-cream)]/80'
   }`;
 
 export function Layout() {
   return (
     <div className="min-h-screen">
+      <div className="ambient-stage" aria-hidden>
+        <div className="ambient-orb ambient-orb--pink" />
+        <div className="ambient-orb ambient-orb--magenta" />
+        <div className="ambient-orb ambient-orb--gold" />
+      </div>
       <div className="ambient-mesh" aria-hidden />
-      <header className="sticky top-0 z-50 border-b border-[var(--color-for-pink)]/20 bg-[var(--color-for-dark)]/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-          <Link to="/" className="font-display text-xl font-extrabold tracking-tight">
-            <span className="text-[var(--color-for-glow)]">ONCE</span>{' '}
+      <div className="ambient-grain" aria-hidden />
+
+      <header className="site-header sticky top-0 z-50 relative">
+        <div className="shell-x shell-y-header flex min-w-0 flex-wrap items-center justify-between gap-fluid">
+          <Link to="/" className="brand-link font-display text-brand-fluid font-extrabold tracking-tight">
+            <span className="text-gradient-glow">ONCE</span>{' '}
             <span className="text-white">Countdown Hub</span>
           </Link>
-          <p className="hidden text-xs uppercase tracking-[0.2em] text-[var(--color-for-gold)] sm:block">
+          <p className="tagline-pulse hidden text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--color-for-gold)] sm:block sm:text-xs">
             THIS IS FOR · World Tour 2026
           </p>
-          <nav className="flex flex-wrap gap-2">
+          <nav className="flex min-w-0 flex-wrap gap-fluid">
             <NavLink to="/" end className={linkClass}>
               Inicio
             </NavLink>
@@ -33,10 +38,16 @@ export function Layout() {
           </nav>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-8">
-        <Outlet />
+
+      <main className="shell-x shell-y-main min-w-0">
+        <div className="animate-in">
+          <Outlet />
+        </div>
       </main>
-      <footer className="mx-auto max-w-6xl px-4 py-10 text-center text-xs text-white/40">
+
+      <footer className="shell-x py-[clamp(2rem,4vw,3.5rem)] text-center text-[0.7rem] text-white/40 sm:text-xs">
+        <span className="text-[var(--color-for-glow)]/80">Blux Myoui</span>
+        <span className="mx-1.5 text-white/25">·</span>
         Proyecto fan no oficial · Fase 5 · TWICE «THIS IS FOR» 2026
       </footer>
     </div>

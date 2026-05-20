@@ -13,6 +13,9 @@ interface EventFormProps {
   }) => Promise<void>;
 }
 
+const fieldClass =
+  'input-for input-touch mt-1.5 w-full rounded-[var(--radius-sm)] border border-white/15 bg-black/35 text-white';
+
 export function EventForm({ onSubmit }: EventFormProps) {
   const [title, setTitle] = useState('');
   const [type, setType] = useState<EventType>('world_tour');
@@ -51,27 +54,30 @@ export function EventForm({ onSubmit }: EventFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-for space-y-4 rounded-2xl p-5">
-      <h3 className="font-display text-lg font-bold text-white">Nuevo evento ONCE</h3>
+    <form
+      onSubmit={handleSubmit}
+      className="glass-for panel-pad-fluid animate-in-delay-3 space-y-[clamp(1rem,1.5vw,1.25rem)] rounded-[var(--radius-md)]"
+    >
+      <h3 className="font-display text-section-fluid font-bold text-gradient-glow">Nuevo evento ONCE</h3>
       {error && <p className="text-sm text-red-300">{error}</p>}
-      <label className="block text-sm">
+      <label className="block text-[0.92rem] sm:text-sm">
         <span className="text-white/60">Titulo</span>
         <input
           required
           minLength={3}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
+          className={fieldClass}
           placeholder="Ej. THIS IS FOR — Madrid"
         />
       </label>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm">
+      <div className="grid gap-fluid-lg sm:grid-cols-2">
+        <label className="block text-[0.92rem] sm:text-sm">
           <span className="text-white/60">Tipo</span>
           <select
             value={type}
             onChange={(e) => setType(e.target.value as EventType)}
-            className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
+            className={fieldClass}
           >
             <option value="world_tour">World Tour</option>
             <option value="comeback">Comeback</option>
@@ -80,56 +86,39 @@ export function EventForm({ onSubmit }: EventFormProps) {
             <option value="other">Otro</option>
           </select>
         </label>
-        <label className="block text-sm">
+        <label className="block text-[0.92rem] sm:text-sm">
           <span className="text-white/60">Tour</span>
-          <input
-            value={tourName}
-            onChange={(e) => setTourName(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
-          />
+          <input value={tourName} onChange={(e) => setTourName(e.target.value)} className={fieldClass} />
         </label>
       </div>
-      <label className="block text-sm">
+      <label className="block text-[0.92rem] sm:text-sm">
         <span className="text-white/60">Fecha y hora</span>
         <input
           required
           type="datetime-local"
           value={startsAt}
           onChange={(e) => setStartsAt(e.target.value)}
-          className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
+          className={fieldClass}
         />
       </label>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm">
+      <div className="grid gap-fluid-lg sm:grid-cols-2">
+        <label className="block text-[0.92rem] sm:text-sm">
           <span className="text-white/60">Ciudad</span>
-          <input
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
-          />
+          <input value={city} onChange={(e) => setCity(e.target.value)} className={fieldClass} />
         </label>
-        <label className="block text-sm">
+        <label className="block text-[0.92rem] sm:text-sm">
           <span className="text-white/60">Pais</span>
-          <input
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
-          />
+          <input value={country} onChange={(e) => setCountry(e.target.value)} className={fieldClass} />
         </label>
       </div>
-      <label className="block text-sm">
+      <label className="block text-[0.92rem] sm:text-sm">
         <span className="text-white/60">Notas</span>
-        <textarea
-          value={notes}
-          onChange={(e) => setNotes(e.target.value)}
-          rows={2}
-          className="mt-1 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-2 text-white"
-        />
+        <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} className={fieldClass} />
       </label>
       <button
         type="submit"
         disabled={busy}
-        className="w-full rounded-full bg-[var(--color-for-pink)] py-3 font-bold text-white shadow-lg shadow-[var(--color-for-pink)]/40 disabled:opacity-50"
+        className="btn-primary input-touch w-full rounded-full font-bold text-white disabled:opacity-50"
       >
         {busy ? 'Guardando...' : 'Añadir evento'}
       </button>

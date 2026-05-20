@@ -7,12 +7,17 @@ export function HomePage() {
   const tourDates = events.filter((e) => e.tourName === 'THIS IS FOR').length;
 
   if (loading) {
-    return <p className="text-center text-white/60">Cargando countdown...</p>;
+    return (
+      <div className="glass-for panel-pad-fluid flex min-h-[200px] flex-col items-center justify-center gap-4 rounded-[var(--radius-md)]">
+        <div className="h-2 w-48 overflow-hidden rounded-full skeleton-shimmer" />
+        <p className="loading-pulse text-center text-white/60">Cargando countdown...</p>
+      </div>
+    );
   }
 
   if (error) {
     return (
-      <div className="glass-for rounded-2xl p-6 text-center text-red-300">
+      <div className="glass-for panel-pad-fluid animate-in rounded-[var(--radius-md)] text-center text-red-300">
         <p>{error}</p>
         <p className="mt-2 text-sm text-white/50">¿API en marcha? cd server && npm run dev</p>
       </div>
@@ -20,16 +25,16 @@ export function HomePage() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="text-center sm:text-left">
-        <p className="text-sm font-bold uppercase tracking-[0.25em] text-[var(--color-for-gold)]">
+    <div className="space-y-fluid min-w-0">
+      <div className="animate-in text-center sm:text-left">
+        <p className="text-[0.84rem] font-bold uppercase tracking-[0.25em] text-[var(--color-for-gold)] sm:text-sm">
           TWICE · 2026
         </p>
-        <h2 className="font-display mt-2 text-3xl font-extrabold text-white sm:text-5xl">
-          THIS IS FOR
-          <span className="block text-[var(--color-for-glow)]">World Tour Hub</span>
+        <h2 className="font-display text-page-fluid mt-3 font-extrabold">
+          <span className="text-gradient-hero">THIS IS FOR</span>
+          <span className="mt-1 block text-gradient-glow">World Tour Hub</span>
         </h2>
-        <p className="mt-3 max-w-2xl text-white/65">
+        <p className="mt-4 max-w-2xl text-[0.94rem] leading-relaxed text-white/65 sm:text-base">
           Cuenta atras al proximo evento, fechas del tour y comebacks en un solo panel para ONCE.
         </p>
       </div>
@@ -37,25 +42,22 @@ export function HomePage() {
       {featured ? (
         <CountdownHero event={featured} />
       ) : (
-        <p className="glass-for rounded-2xl p-6 text-center text-white/60">
+        <p className="glass-for panel-pad-fluid animate-in-delay-2 rounded-[var(--radius-md)] text-center text-white/60">
           No hay evento destacado. Añade uno en Eventos.
         </p>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <div className="glass-for rounded-2xl p-5 text-center">
-          <p className="text-3xl font-extrabold text-[var(--color-for-glow)]">{events.length}</p>
-          <p className="text-sm text-white/50">Eventos totales</p>
+      <div className="grid gap-fluid-lg sm:grid-cols-3">
+        <div className="glass-for stat-glow stat-min-fluid animate-in-delay-2 flex flex-col items-center justify-center rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)] text-center transition-transform duration-300">
+          <p className="text-[clamp(1.75rem,4vw,2.25rem)] font-extrabold text-gradient-glow">{events.length}</p>
+          <p className="mt-1 text-[0.84rem] text-white/50 sm:text-sm">Eventos totales</p>
         </div>
-        <div className="glass-for rounded-2xl p-5 text-center">
-          <p className="text-3xl font-extrabold text-[var(--color-for-gold)]">{tourDates}</p>
-          <p className="text-sm text-white/50">Fechas THIS IS FOR</p>
+        <div className="glass-for stat-glow stat-min-fluid animate-in-delay-2 flex flex-col items-center justify-center rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)] text-center transition-transform duration-300">
+          <p className="text-[clamp(1.75rem,4vw,2.25rem)] font-extrabold text-gradient-gold">{tourDates}</p>
+          <p className="mt-1 text-[0.84rem] text-white/50 sm:text-sm">Fechas THIS IS FOR</p>
         </div>
-        <div className="glass-for rounded-2xl p-5 text-center">
-          <Link
-            to="/eventos"
-            className="inline-block rounded-full bg-[var(--color-for-pink)] px-5 py-2 text-sm font-bold text-white"
-          >
+        <div className="glass-for stat-glow stat-min-fluid animate-in-delay-3 flex flex-col items-center justify-center rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)] text-center transition-transform duration-300">
+          <Link to="/eventos" className="btn-primary btn-nav-fluid inline-block rounded-full font-bold text-white">
             Gestionar eventos
           </Link>
         </div>

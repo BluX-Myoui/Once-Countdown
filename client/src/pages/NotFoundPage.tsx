@@ -2,13 +2,12 @@ import { Link } from 'react-router-dom';
 
 export function NotFoundPage() {
   return (
-    <div className="glass-for rounded-3xl p-12 text-center">
-      <p className="font-display text-6xl font-extrabold text-[var(--color-for-pink)]">404</p>
-      <p className="mt-4 text-white/70">Esta ruta no existe en el hub.</p>
-      <Link
-        to="/"
-        className="mt-6 inline-block rounded-full bg-[var(--color-for-pink)] px-6 py-3 font-bold text-white"
-      >
+    <div className="glass-for glass-hero panel-pad-fluid panel-radius-lg animate-in min-h-[min(280px,40vh)] content-center text-center">
+      <p className="font-display err-404 text-[clamp(3.5rem,12vw,6rem)] font-extrabold leading-none text-gradient-hero">
+        404
+      </p>
+      <p className="mt-5 text-[0.98rem] text-white/70 sm:text-base">Esta ruta no existe en el hub.</p>
+      <Link to="/" className="btn-primary btn-nav-fluid mt-8 inline-block rounded-full font-bold text-white">
         Volver al countdown
       </Link>
     </div>

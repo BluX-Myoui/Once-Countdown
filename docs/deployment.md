@@ -10,7 +10,7 @@ El `vercel.json` de la raiz:
 
 ## Pasos
 
-1. Sube el repo a GitHub.
+1. Repositorio: `comeback-countdown-hub` (autor: Blux Myoui). Sube o conecta en GitHub.
 2. Importa en Vercel (preset Other).
 3. Deploy automatico en cada push a `main`.
 

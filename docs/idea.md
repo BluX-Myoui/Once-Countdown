@@ -1,5 +1,7 @@
 # Idea del proyecto — ONCE Countdown Hub
 
+**Autor (fan):** Blux Myoui — nombre no oficial, proyecto educativo Fase 5.
+
 ## Problema
 
 Como ONCE es facil perder fechas de world tour, comebacks y MVs al mezclar anuncios en redes, zonas horarias y multiples paradas del tour.

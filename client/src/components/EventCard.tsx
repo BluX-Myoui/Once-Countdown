@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { FanEvent } from '../types/event';
 import { getCountdown } from '../utils/countdown';
 import { TYPE_LABELS, TYPE_STYLES } from '../utils/labels';
@@ -6,9 +7,10 @@ interface EventCardProps {
   event: FanEvent;
   onDelete: (id: string) => void;
   onFeature: (id: string) => void;
+  style?: CSSProperties;
 }
 
-export function EventCard({ event, onDelete, onFeature }: EventCardProps) {
+export function EventCard({ event, onDelete, onFeature, style }: EventCardProps) {
   const cd = getCountdown(event.startsAt);
   const date = new Date(event.startsAt).toLocaleString('es-ES', {
     dateStyle: 'medium',
@@ -16,31 +18,38 @@ export function EventCard({ event, onDelete, onFeature }: EventCardProps) {
   });
 
   return (
-    <article className="glass-for flex flex-col gap-3 rounded-2xl p-5 transition hover:border-[var(--color-for-pink)]/60">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <span className={`rounded-full border px-2.5 py-0.5 text-xs font-bold ${TYPE_STYLES[event.type]}`}>
+    <article
+      style={style}
+      className="glass-for card-lift card-min-fluid stagger-card flex min-w-0 flex-col gap-fluid rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)]"
+    >
+      <div className="flex min-w-0 flex-wrap items-start justify-between gap-fluid">
+        <span className={`badge-chip rounded-full border px-3 py-1 text-xs font-bold ${TYPE_STYLES[event.type]}`}>
           {TYPE_LABELS[event.type]}
         </span>
         {event.featured && (
-          <span className="text-xs font-bold uppercase text-[var(--color-for-gold)]">Destacado</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-gradient-gold">Destacado</span>
         )}
       </div>
-      <h3 className="font-display text-lg font-bold text-white">{event.title}</h3>
-      <p className="text-sm text-white/55">{date}</p>
+      <h3 className="font-display text-[1.02rem] font-bold leading-snug text-white sm:text-lg">{event.title}</h3>
+      <p className="text-[0.92rem] text-white/55 sm:text-sm">{date}</p>
       {(event.city || event.country) && (
-        <p className="text-sm text-[var(--color-for-glow)]">
+        <p className="text-[0.92rem] text-[var(--color-for-glow)] sm:text-sm">
           {[event.city, event.country].filter(Boolean).join(', ')}
         </p>
       )}
-      <p className="text-sm font-semibold text-white/80">
-        {cd.isPast ? 'Finalizado' : `Faltan ${cd.days}d ${cd.hours}h`}
+      <p className="text-[0.92rem] font-semibold text-white/80 sm:text-sm">
+        {cd.isPast ? (
+          <span className="text-white/50">Finalizado</span>
+        ) : (
+          <span className="text-gradient-glow">Faltan {cd.days}d {cd.hours}h</span>
+        )}
       </p>
-      <div className="mt-auto flex flex-wrap gap-2 pt-2">
+      <div className="mt-auto flex flex-wrap gap-fluid pt-3">
         {!event.featured && (
           <button
             type="button"
             onClick={() => onFeature(event.id)}
-            className="rounded-lg bg-[var(--color-for-pink)]/25 px-3 py-1.5 text-xs font-semibold text-[var(--color-for-glow)]"
+            className="btn-accent rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold text-[var(--color-for-glow)]"
           >
             Destacar
           </button>
@@ -48,7 +57,7 @@ export function EventCard({ event, onDelete, onFeature }: EventCardProps) {
         <button
           type="button"
           onClick={() => onDelete(event.id)}
-          className="rounded-lg border border-red-400/40 px-3 py-1.5 text-xs font-semibold text-red-300"
+          className="btn-danger rounded-[var(--radius-sm)] border border-red-400/40 px-3.5 py-2 text-xs font-semibold text-red-300"
         >
           Borrar
         </button>
