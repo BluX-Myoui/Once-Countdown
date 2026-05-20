@@ -720,6 +720,237 @@ body {
   }
 }
 
+/* ─── Busqueda (estilo TaskFlow: reordenar, no ocultar) ─── */
+.search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.95rem;
+  z-index: 1;
+  font-size: 1rem;
+  color: var(--color-for-glow);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: clamp(0.8rem, 1.2vw, 0.95rem) 2.75rem 0.95rem 2.5rem;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 30%, transparent);
+  background: color-mix(in srgb, black 40%, transparent);
+  color: var(--color-for-cream);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-for-pink);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--color-for-pink) 25%, transparent),
+    0 0 28px color-mix(in srgb, var(--color-for-pink) 18%, transparent);
+}
+
+.btn-clear-search {
+  position: absolute;
+  right: 0.55rem;
+  width: 28px;
+  height: 28px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-for-cream);
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: var(--ease-smooth);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.btn-clear-search.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-clear-search:hover {
+  background: color-mix(in srgb, var(--color-for-pink) 25%, transparent);
+  border-color: color-mix(in srgb, var(--color-for-pink) 40%, transparent);
+}
+
+.highlight-match {
+  background: color-mix(in srgb, var(--color-for-pink) 45%, transparent);
+  color: var(--color-for-cream);
+  font-weight: 700;
+  padding: 0.05rem 0.15rem;
+  border-radius: 4px;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+}
+
+.card-search-hit {
+  border-color: color-mix(in srgb, var(--color-for-gold) 55%, transparent) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-for-gold) 35%, transparent),
+    0 12px 36px color-mix(in srgb, var(--color-for-pink) 22%, transparent) !important;
+  animation: search-hit-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes search-hit-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+/* ─── Formulario con pestañas ─── */
+.form-panel {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.form-tabs {
+  background: color-mix(in srgb, black 35%, transparent);
+  padding: 0.25rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, white 8%, transparent);
+}
+
+.form-tab {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.form-tab--active {
+  background: linear-gradient(135deg, var(--color-for-pink), var(--color-for-hot)) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--color-for-pink) 40%, transparent);
+}
+
+.events-layout {
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 2rem);
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .events-layout {
+    grid-template-columns: minmax(0, 1fr) clamp(280px, 32vw, 380px);
+    align-items: start;
+  }
+
+  .events-form-column {
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+.events-list-shell {
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 22%, transparent);
+}
+
+.events-list-shell .grid {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-for-pink) transparent;
+}
+
+/* ─── Calendario datetime-local ─── */
+.datetime-field {
+  position: relative;
+  margin-top: 0.4rem;
+}
+
+.datetime-field__glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-sm) + 2px);
+  background: linear-gradient(
+    135deg,
+    var(--color-for-pink),
+    var(--color-for-gold),
+    var(--color-for-glow)
+  );
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 280ms ease;
+  animation: datetime-glow-idle 4s ease-in-out infinite;
+}
+
+.datetime-field:focus-within .datetime-field__glow {
+  opacity: 0.55;
+}
+
+.datetime-input {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: clamp(0.8rem, 1.2vw, 0.95rem) 1rem;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-for-panel) 90%, black),
+    color-mix(in srgb, black 50%, transparent)
+  );
+  color: var(--color-for-cream);
+  color-scheme: dark;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms var(--ease-spring);
+}
+
+.datetime-input:hover {
+  border-color: var(--color-for-glow);
+}
+
+.datetime-input:focus {
+  outline: none;
+  border-color: var(--color-for-gold);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--color-for-gold) 22%, transparent),
+    0 0 24px color-mix(in srgb, var(--color-for-pink) 20%, transparent);
+  transform: translateY(-1px);
+}
+
+.datetime-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.85) sepia(1) saturate(4) hue-rotate(290deg) brightness(1.1);
+  opacity: 0.9;
+  transition: transform 200ms var(--ease-spring);
+}
+
+.datetime-input::-webkit-calendar-picker-indicator:hover {
+  transform: scale(1.15);
+}
+
+.datetime-field__hint {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--color-for-glow) 70%, transparent);
+}
+
+@keyframes datetime-glow-idle {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  50% {
+    opacity: 0.22;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

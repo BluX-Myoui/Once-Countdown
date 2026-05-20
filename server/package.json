@@ -1,7 +1,7 @@
 {
   "name": "once-countdown-server",
   "version": "1.0.0",
-  "description": "API REST ONCE Countdown Hub",
+  "description": "API REST ONCE Countdown",
   "main": "src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js",

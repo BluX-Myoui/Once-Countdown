@@ -1,8 +1,8 @@
 {
-  "name": "comeback-countdown-hub",
+  "name": "once-countdown",
   "private": true,
   "version": "1.0.0",
-  "description": "ONCE Countdown Hub — Fase 5 TWICE THIS IS FOR 2026",
+  "description": "ONCE Countdown — Fase 5 TWICE THIS IS FOR 2026",
   "author": "Blux Myoui",
   "scripts": {
     "dev:server": "npm run dev --prefix server",

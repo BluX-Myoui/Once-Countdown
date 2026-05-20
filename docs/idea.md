@@ -1,4 +1,4 @@
-# Idea del proyecto — ONCE Countdown Hub
+# Idea del proyecto — ONCE Countdown
 
 **Autor (fan):** Blux Myoui — nombre no oficial, proyecto educativo Fase 5.
 
@@ -12,7 +12,7 @@ Fans de TWICE (ONCE) que quieren un panel personal con cuenta atras y calendario
 
 ## Solucion
 
-Hub web con countdown al evento destacado, listado filtrable (world tour, comeback, MV, fanmeet) y notas por fecha.
+App web con countdown al evento destacado, listado filtrable (world tour, comeback, MV, fanmeet) y notas por fecha.
 
 ## Funcionalidades principales
 
@@ -20,7 +20,7 @@ Hub web con countdown al evento destacado, listado filtrable (world tour, comeba
 - CRUD de eventos via API REST
 - Filtros por tipo de evento
 - Marcar evento destacado para la home
-- Seed con fechas del world tour THIS IS FOR
+- Seed con **todas las ciudades** del world tour THIS IS FOR (Asia/Oceania 2025, NA/Europa/Tokyo 2026) + eventos 2026 (comeback, MV, fanmeet)
 
 ## Opcionales
 

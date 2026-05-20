@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(loggerAcademico);
 
 app.get('/api/v1/health', (req, res) => {
-    res.json({ status: 'ok', service: 'ONCE Countdown Hub API' });
+    res.json({ status: 'ok', service: 'ONCE Countdown API' });
 });
 
 app.use('/api/v1/events', eventRoutes);

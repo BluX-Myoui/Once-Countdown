@@ -1,6 +1,6 @@
 # Metodologia agil
 
-Se uso **Kanban en Trello** para organizar el desarrollo de ONCE Countdown Hub (Fase 5).
+Se uso **Kanban en Trello** para organizar el desarrollo de ONCE Countdown (Fase 5).
 
 Columnas: Backlog → Todo → In Progress → Review → Done.
 

@@ -32,7 +32,7 @@ export function HomePage() {
         </p>
         <h2 className="font-display text-page-fluid mt-3 font-extrabold">
           <span className="text-gradient-hero">THIS IS FOR</span>
-          <span className="mt-1 block text-gradient-glow">World Tour Hub</span>
+          <span className="mt-1 block text-gradient-glow">World Tour · 2026</span>
         </h2>
         <p className="mt-4 max-w-2xl text-[0.94rem] leading-relaxed text-white/65 sm:text-base">
           Cuenta atras al proximo evento, fechas del tour y comebacks en un solo panel para ONCE.

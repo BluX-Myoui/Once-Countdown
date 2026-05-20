@@ -1,10 +1,11 @@
-# ONCE Countdown Hub
+# ONCE Countdown
 
-**Comeback Countdown Hub** — proyecto propio **Fase 5**. Panel fan para cuentas atrás del world tour **TWICE «THIS IS FOR» (2026)**, comebacks, MVs y fechas ONCE.
+**ONCE Countdown** — proyecto propio **Fase 5** por **Blux Myoui**. Panel fan para cuentas atrás del world tour **TWICE «THIS IS FOR» (2026)**, comebacks, MVs y fechas ONCE.
 
 | | |
 |---|---|
 | **Autor / fan** | **Blux Myoui** *(nombre de fan; no oficial)* |
+| **Repositorio** | [github.com/BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown) |
 | **Curso** | Fase 5 — proyecto educativo propio |
 | **Stack** | React 19 · TypeScript · Tailwind CSS 4 · Express · Vercel |
 
@@ -14,19 +15,37 @@
 
 ## Características
 
-- Cuenta atrás en vivo al **evento destacado** (seed THIS IS FOR 2026 por defecto)
+- Cuenta atrás en vivo al **evento destacado** (por defecto: próxima parada del tour — **Berlin**, may 2026)
+- Seed con **44 ciudades** del world tour (Asia/Oceanía 2025 + Norteamérica/Europa/Tokyo 2026) y eventos fan 2026
 - **CRUD** de eventos vía API REST (`world_tour`, `comeback`, `mv_release`, `fanmeet`, `other`)
 - Filtros por tipo en la página Eventos
 - Marcar evento **destacado** para la home
 - UI 2026: glassmorphism, orbes animados, gradientes y microinteracciones
+- **Buscador** en Eventos: sube coincidencias al inicio (ej. «Espana») sin ocultar el resto
+- Formulario **Nuevo evento** en pestañas (compacto)
+- Calendario `datetime-local` con tema ONCE y animaciones
 - Cliente API tipado y despliegue listo para **Vercel**
+
+---
+
+## Carpeta del proyecto
+
+Nombre del repo / carpeta: **`once-countdown`** (antes `comeback-countdown-hub`).
+
+Si aún tienes la carpeta antigua, cierra Cursor y el servidor (`npm run dev`), luego en el Escritorio:
+
+```powershell
+Rename-Item "c:\Users\levia\Desktop\comeback-countdown-hub" "once-countdown"
+```
+
+Vuelve a abrir `c:\Users\levia\Desktop\once-countdown` en Cursor.
 
 ---
 
 ## Estructura del repositorio
 
 ```
-comeback-countdown-hub/
+once-countdown/
 ├── client/          # Frontend React 19 + Vite (puerto 5174 en dev)
 │   └── src/
 │       ├── api/         # Cliente fetch tipado
@@ -66,7 +85,7 @@ npm install
 npm run dev
 ```
 
-Debe mostrar: `ONCE Countdown Hub API → http://localhost:3001`
+Debe mostrar: `ONCE Countdown API → http://localhost:3001`
 
 ### Terminal 2 — Frontend (puerto **5174**)
 
@@ -181,4 +200,4 @@ Guía completa: [`docs/deployment.md`](docs/deployment.md).
 
 ## Autor
 
-**Blux Myoui** — Fase 5 · ONCE Countdown Hub · 2026
+**Blux Myoui** — Fase 5 · ONCE Countdown · 2026

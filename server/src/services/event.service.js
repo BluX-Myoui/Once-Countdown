@@ -1,3 +1,5 @@
+const { SEED } = require('../data/this-is-for-seed');
+
 const EVENT_TYPES = ['world_tour', 'comeback', 'mv_release', 'fanmeet', 'other'];
 const TOUR_NAMES = ['THIS IS FOR'];
 
@@ -23,69 +25,6 @@ function normalizeEvent(raw) {
         official: Boolean(raw.official)
     };
 }
-
-const SEED = [
-    {
-        id: 'ev-tif-2026',
-        title: 'TWICE WORLD TOUR «THIS IS FOR» — Inicio',
-        type: 'world_tour',
-        era: 'THIS IS FOR',
-        tourName: 'THIS IS FOR',
-        venue: 'KSPO DOME',
-        city: 'Seoul',
-        country: 'Corea del Sur',
-        startsAt: '2026-05-15T18:00:00.000Z',
-        endsAt: '2026-05-15T23:00:00.000Z',
-        notes: 'Acto inaugural del world tour 2026. Cuenta atras principal del hub.',
-        featured: true,
-        official: true
-    },
-    {
-        id: 'ev-tif-tokyo',
-        title: 'THIS IS FOR — Tokyo',
-        type: 'world_tour',
-        era: 'THIS IS FOR',
-        tourName: 'THIS IS FOR',
-        venue: 'Tokyo Dome',
-        city: 'Tokyo',
-        country: 'Japon',
-        startsAt: '2026-07-10T10:00:00.000Z',
-        endsAt: null,
-        notes: 'Parada Asia del recorrido mundial.',
-        featured: false,
-        official: true
-    },
-    {
-        id: 'ev-tif-la',
-        title: 'THIS IS FOR — Los Angeles',
-        type: 'world_tour',
-        era: 'THIS IS FOR',
-        tourName: 'THIS IS FOR',
-        venue: 'SoFi Stadium',
-        city: 'Los Angeles',
-        country: 'EE.UU.',
-        startsAt: '2026-09-20T02:00:00.000Z',
-        endsAt: null,
-        notes: 'Fecha estimada para planificacion ONCE internacional.',
-        featured: false,
-        official: true
-    },
-    {
-        id: 'ev-cb-2026',
-        title: 'Comeback — Nuevo mini album (placeholder)',
-        type: 'comeback',
-        era: 'ERA 2026',
-        tourName: '',
-        venue: '',
-        city: '',
-        country: '',
-        startsAt: '2026-11-01T15:00:00.000Z',
-        endsAt: null,
-        notes: 'Sustituye por fecha real cuando JYP anuncie comeback.',
-        featured: false,
-        official: false
-    }
-];
 
 let events = SEED.map(normalizeEvent);
 

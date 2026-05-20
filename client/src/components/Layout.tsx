@@ -20,7 +20,7 @@ export function Layout() {
         <div className="shell-x shell-y-header flex min-w-0 flex-wrap items-center justify-between gap-fluid">
           <Link to="/" className="brand-link font-display text-brand-fluid font-extrabold tracking-tight">
             <span className="text-gradient-glow">ONCE</span>{' '}
-            <span className="text-white">Countdown Hub</span>
+            <span className="text-white">Countdown</span>
           </Link>
           <p className="tagline-pulse hidden text-[0.7rem] font-bold uppercase tracking-[0.2em] text-[var(--color-for-gold)] sm:block sm:text-xs">
             THIS IS FOR · World Tour 2026
