@@ -5,6 +5,7 @@ import { EventSearchBar } from '../components/EventSearchBar';
 import { useEvents } from '../context/EventContext';
 import type { EventType } from '../types/event';
 import { countSearchMatches, sortEventsBySearch } from '../utils/searchEvents';
+import { sortByNextCelebration } from '../utils/sortEvents';
 import { TYPE_LABELS } from '../utils/labels';
 
 const FILTERS: { id: EventType | 'all'; label: string }[] = [
@@ -31,8 +32,12 @@ export function EventsPage() {
 
   const [search, setSearch] = useState('');
   const [panel, setPanel] = useState<PagePanel>('lista');
+  const [featuringId, setFeaturingId] = useState<string | null>(null);
 
-  const sortedEvents = useMemo(() => sortEventsBySearch(events, search), [events, search]);
+  const sortedEvents = useMemo(() => {
+    const byDate = sortByNextCelebration(events);
+    return sortEventsBySearch(byDate, search);
+  }, [events, search]);
   const matchCount = useMemo(() => countSearchMatches(events, search), [events, search]);
 
   return (
@@ -96,7 +101,7 @@ export function EventsPage() {
             total={sortedEvents.length}
           />
 
-          {loading && (
+          {loading && events.length === 0 && (
             <div className="glass-for panel-pad-fluid skeleton-shimmer min-h-[120px] rounded-[var(--radius-md)]" />
           )}
           {error && <p className="text-red-300">{error}</p>}
@@ -107,15 +112,27 @@ export function EventsPage() {
           )}
 
           <div className="events-list-shell glass-for rounded-[var(--radius-md)] p-3 sm:p-4">
-            <div className="grid max-h-[min(68vh,640px)] gap-fluid-lg overflow-y-auto pr-1 sm:grid-cols-2">
+            <p className="events-list-hint mb-3 text-[0.75rem] text-white/45">
+              Orden: proximo en celebrarse primero · 4 tarjetas visibles sin recorte · {sortedEvents.length}{' '}
+              en total
+            </p>
+            <div className="events-list-grid grid gap-fluid-lg overflow-y-auto overscroll-contain pr-1 sm:grid-cols-2">
               {sortedEvents.map((ev, i) => (
                 <EventCard
                   key={ev.id}
                   event={ev}
                   searchQuery={search}
-                  style={{ animationDelay: `${0.03 + i * 0.04}s` }}
+                  featuringId={featuringId}
+                  style={i < 4 ? { animationDelay: `${0.03 + i * 0.04}s` } : undefined}
                   onDelete={(id) => void removeEvent(id)}
-                  onFeature={(id) => void setFeatured(id)}
+                  onFeature={async (id) => {
+                    setFeaturingId(id);
+                    try {
+                      await setFeatured(id);
+                    } finally {
+                      setFeaturingId(null);
+                    }
+                  }}
                 />
               ))}
             </div>

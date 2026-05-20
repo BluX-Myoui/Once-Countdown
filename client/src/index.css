@@ -30,6 +30,8 @@ body {
   color: var(--color-for-cream);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  accent-color: var(--color-for-pink);
+  color-scheme: dark;
 }
 
 #root {
@@ -176,12 +178,7 @@ body {
 }
 
 .card-lift:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--color-for-pink) 55%, transparent);
-  box-shadow:
-    0 12px 40px color-mix(in srgb, var(--color-for-pink) 18%, transparent),
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 color-mix(in srgb, white 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-for-pink) 50%, transparent);
 }
 
 .glow-ring {
@@ -246,7 +243,7 @@ body {
 }
 
 .badge-chip:hover {
-  transform: scale(1.04);
+  opacity: 0.95;
 }
 
 /* ─── Botones ─── */
@@ -795,11 +792,8 @@ body {
 }
 
 .card-search-hit {
-  border-color: color-mix(in srgb, var(--color-for-gold) 55%, transparent) !important;
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--color-for-gold) 35%, transparent),
-    0 12px 36px color-mix(in srgb, var(--color-for-pink) 22%, transparent) !important;
-  animation: search-hit-pulse 2.2s ease-in-out infinite;
+  border-color: color-mix(in srgb, var(--color-for-gold) 45%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-for-gold) 25%, transparent) !important;
 }
 
 @keyframes search-hit-pulse {
@@ -858,9 +852,414 @@ body {
   border: 1px solid color-mix(in srgb, var(--color-for-pink) 22%, transparent);
 }
 
-.events-list-shell .grid {
+.events-list-grid {
   scrollbar-width: thin;
   scrollbar-color: var(--color-for-pink) transparent;
+}
+
+/* ~4 tarjetas completas visibles (sin recorte inferior) */
+.events-list-shell {
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .events-list-grid {
+    max-height: calc(4 * 11.75rem + 3 * 1rem);
+    padding-bottom: 0.75rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .events-list-grid {
+    max-height: calc(2 * 12.75rem + 1rem + 0.75rem);
+    padding-bottom: 0.75rem;
+  }
+}
+
+.events-list-grid .event-card {
+  min-height: 0;
+}
+
+.event-card {
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.event-card:hover {
+  border-color: color-mix(in srgb, var(--color-for-pink) 45%, transparent);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--color-for-pink) 12%, transparent);
+}
+
+.event-card--featured:hover {
+  transform: none;
+}
+
+/* Badges por tipo (World Tour alineado al desplegable) */
+.badge-type {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-type--world_tour {
+  background: color-mix(in srgb, var(--color-for-pink) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 45%, transparent);
+  color: var(--color-for-glow);
+  box-shadow: none;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.badge-type--comeback {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-for-gold) 35%, black), color-mix(in srgb, var(--color-for-gold) 15%, black));
+  border: 1px solid color-mix(in srgb, var(--color-for-gold) 50%, transparent);
+  color: var(--color-for-gold);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-for-gold) 22%, transparent);
+}
+
+.badge-type--mv_release {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.45), rgba(88, 28, 135, 0.35));
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  color: #e9d5ff;
+}
+
+.badge-type--fanmeet {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(14, 116, 144, 0.3));
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  color: #bae6fd;
+}
+
+.badge-type--other {
+  background: color-mix(in srgb, white 12%, transparent);
+  border: 1px solid color-mix(in srgb, white 22%, transparent);
+  color: color-mix(in srgb, var(--color-for-cream) 75%, transparent);
+}
+
+/* Calendario personalizado (mismo lenguaje que OnceSelect) */
+.once-datetime {
+  position: relative;
+}
+
+.once-datetime__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  padding: clamp(0.75rem, 1.2vw, 0.95rem) clamp(0.85rem, 1.5vw, 1rem);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, black 35%, transparent);
+  border: 1px solid color-mix(in srgb, white 15%, transparent);
+  color: var(--color-for-cream);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.once-datetime__trigger:hover,
+.once-datetime__trigger:focus-visible {
+  border-color: color-mix(in srgb, var(--color-for-glow) 35%, transparent);
+  outline: none;
+}
+
+.once-datetime__panel {
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  right: 0;
+  margin-top: 0.35rem;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 45%, transparent);
+  background: color-mix(in srgb, var(--color-for-panel) 94%, black);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 32px color-mix(in srgb, var(--color-for-pink) 22%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  pointer-events: none;
+  transition:
+    opacity 200ms var(--ease-smooth),
+    transform 220ms var(--ease-spring),
+    visibility 200ms;
+}
+
+.once-datetime--open .once-datetime__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+@media (min-width: 480px) {
+  .once-datetime__panel {
+    grid-template-columns: 1fr auto;
+    align-items: stretch;
+  }
+}
+
+.once-datetime__cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.once-datetime__month-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-for-glow);
+}
+
+.once-datetime__nav {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-for-pink) 15%, transparent);
+  color: var(--color-for-cream);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms var(--ease-spring);
+}
+
+.once-datetime__nav:hover {
+  background: color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+  transform: scale(1.05);
+}
+
+.once-datetime__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-for-gold);
+}
+
+.once-datetime__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+.once-datetime__day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-for-cream);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms var(--ease-spring),
+    color 160ms ease;
+}
+
+.once-datetime__day:hover:not(.once-datetime__day--empty) {
+  background: color-mix(in srgb, var(--color-for-pink) 25%, transparent);
+  color: var(--color-for-glow);
+}
+
+.once-datetime__day--active {
+  background: linear-gradient(135deg, var(--color-for-pink), var(--color-for-hot)) !important;
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-for-pink) 40%, transparent);
+}
+
+.once-datetime__day--empty {
+  pointer-events: none;
+}
+
+.once-datetime__quick {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.once-datetime__quick-btn {
+  flex: 1;
+  padding: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 30%, transparent);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-for-glow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.once-datetime__quick-btn:hover {
+  background: color-mix(in srgb, var(--color-for-pink) 20%, transparent);
+}
+
+.once-datetime__time {
+  min-width: 7.5rem;
+  padding: 0.35rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-for-pink) 25%, transparent);
+}
+
+.once-datetime__time-title {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-for-gold);
+}
+
+.once-datetime__time-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+.once-datetime__time-list {
+  margin: 0;
+  padding: 0.2rem;
+  list-style: none;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: color-mix(in srgb, black 35%, transparent);
+}
+
+.once-datetime__time-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.once-datetime__time-list::-webkit-scrollbar-thumb {
+  background: var(--color-for-pink);
+  border-radius: 999px;
+}
+
+.event-card--featured {
+  border-color: color-mix(in srgb, var(--color-for-gold) 50%, transparent) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-for-gold) 40%, transparent),
+    0 8px 28px color-mix(in srgb, var(--color-for-gold) 18%, transparent) !important;
+}
+
+/* ─── Select personalizado ONCE ─── */
+.once-select {
+  position: relative;
+}
+
+.once-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  padding: clamp(0.75rem, 1.2vw, 0.95rem) clamp(0.85rem, 1.5vw, 1rem);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, black 35%, transparent);
+  border: 1px solid color-mix(in srgb, white 15%, transparent);
+  color: var(--color-for-cream);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.once-select__trigger:hover,
+.once-select__trigger:focus-visible {
+  border-color: color-mix(in srgb, var(--color-for-glow) 35%, transparent);
+  outline: none;
+}
+
+.once-select__chevron {
+  color: var(--color-for-glow);
+  font-size: 0.85rem;
+  transition: transform 220ms var(--ease-spring);
+}
+
+.once-select__chevron--up {
+  transform: rotate(180deg);
+}
+
+.once-select__list {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  margin: 0.35rem 0 0;
+  padding: 0.35rem;
+  list-style: none;
+  overflow-y: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 45%, transparent);
+  background: color-mix(in srgb, var(--color-for-panel) 92%, black);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    0 0 24px color-mix(in srgb, var(--color-for-pink) 20%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  pointer-events: none;
+  transition:
+    opacity 200ms var(--ease-smooth),
+    transform 220ms var(--ease-spring),
+    visibility 200ms;
+}
+
+.once-select--open .once-select__list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.once-select__option {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-for-cream);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms var(--ease-spring);
+}
+
+.once-select__option:hover {
+  background: color-mix(in srgb, var(--color-for-pink) 22%, transparent);
+  color: var(--color-for-glow);
+  transform: translateX(3px);
+}
+
+.once-select__option--active {
+  background: linear-gradient(135deg, var(--color-for-pink), var(--color-for-hot));
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+}
+
+.once-select__list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.once-select__list::-webkit-scrollbar-thumb {
+  background: var(--color-for-pink);
+  border-radius: 999px;
+}
+
+/* Select nativo restante (fallback) */
+select.input-for option {
+  background: var(--color-for-panel);
+  color: var(--color-for-cream);
 }
 
 /* ─── Calendario datetime-local ─── */
@@ -900,10 +1299,11 @@ body {
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--color-for-panel) 90%, black),
-    color-mix(in srgb, black 50%, transparent)
+    color-mix(in srgb, var(--color-for-magenta) 25%, black)
   );
   color: var(--color-for-cream);
   color-scheme: dark;
+  accent-color: var(--color-for-pink);
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease,

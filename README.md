@@ -1,83 +1,72 @@
-# ONCE Countdown
+<div align="center">
 
-**ONCE Countdown** — proyecto propio **Fase 5** por **Blux Myoui**. Panel fan para cuentas atrás del world tour **TWICE «THIS IS FOR» (2026)**, comebacks, MVs y fechas ONCE.
+# 💗 ONCE Countdown
 
-| | |
-|---|---|
-| **Autor / fan** | **Blux Myoui** *(nombre de fan; no oficial)* |
-| **Repositorio** | [github.com/BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown) |
-| **Curso** | Fase 5 — proyecto educativo propio |
-| **Stack** | React 19 · TypeScript · Tailwind CSS 4 · Express · Vercel |
+### Tu panel fan para no perderte ni una fecha de TWICE
 
-> Proyecto fan **no oficial**. Sin afiliación a JYP Entertainment ni a TWICE. Nombres y estética usados con fines académicos. Sin logos ni assets con copyright de JYP.
+**World Tour «THIS IS FOR» (2026)** · comebacks · MVs · fanmeets — todo en un solo hub con cuenta atrás en vivo.
+
+<br />
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Express](https://img.shields.io/badge/Express-API-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-Ready-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+
+<br />
+
+**[Demo local](http://localhost:5174)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)** · **Fase 5** · por [**Blux Myoui**](https://github.com/BluX-Myoui)
+
+<br />
+
+![Paleta THIS IS FOR](https://img.shields.io/badge/Pink-%23ff2d7a?style=flat-square) ![Glow](https://img.shields.io/badge/Glow-%23ff9ec8?style=flat-square) ![Gold](https://img.shields.io/badge/Gold-%23f0c14a?style=flat-square) ![Dark](https://img.shields.io/badge/Dark-%230c0610?style=flat-square)
+
+> ⚠️ Proyecto fan **no oficial**. Sin afiliación a JYP Entertainment ni a TWICE. Uso académico de nombres y estética del tour — sin logos ni assets con copyright de JYP.
+
+</div>
 
 ---
 
-## Características
+## ✨ ¿Qué es ONCE Countdown?
 
-- Cuenta atrás en vivo al **evento destacado** (por defecto: próxima parada del tour — **Berlin**, may 2026)
-- Seed con **44 ciudades** del world tour (Asia/Oceanía 2025 + Norteamérica/Europa/Tokyo 2026) y eventos fan 2026
-- **CRUD** de eventos vía API REST (`world_tour`, `comeback`, `mv_release`, `fanmeet`, `other`)
-- Filtros por tipo en la página Eventos
-- Marcar evento **destacado** para la home
-- UI 2026: glassmorphism, orbes animados, gradientes y microinteracciones
-- **Buscador** en Eventos: sube coincidencias al inicio (ej. «Espana») sin ocultar el resto
-- Formulario **Nuevo evento** en pestañas (compacto)
-- Calendario `datetime-local` con tema ONCE y animaciones
-- Cliente API tipado y despliegue listo para **Vercel**
+**ONCE Countdown** es mi proyecto de **Fase 5**: un hub web para fans (ONCE) que centraliza fechas del world tour **THIS IS FOR**, comebacks, estrenos de MV y eventos personales, con:
+
+- ⏱️ **Cuenta atrás en tiempo real** al evento destacado (días, horas, minutos, segundos).
+- 🌍 **44 paradas del World Tour** precargadas (Asia/Oceanía 2025 + Norteamérica, Taipei, Tokyo Stadium y Europa 2026).
+- 🔍 **Buscador inteligente**: escribe «España» y las coincidencias **suben arriba** sin ocultar el resto.
+- 📅 **Calendario y selects personalizados** con la paleta del tour (no el gris aburrido del sistema).
+- ⚡ **Destacar eventos sin recargar la página** — actualización optimista, cero «mini F5».
+
+Inspirado en la energía del tour **THIS IS FOR**, con UI glassmorphism, orbes animados y tipografía **Syne + Outfit**.
 
 ---
 
-## Carpeta del proyecto
+## 🖼️ Vista rápida
 
-Nombre del repo / carpeta: **`once-countdown`** (antes `comeback-countdown-hub`).
+| Inicio | Eventos |
+|--------|---------|
+| Countdown hero al evento destacado + stats del tour | Listado, filtros, buscador, CRUD y formulario por pestañas |
 
-Si aún tienes la carpeta antigua, cierra Cursor y el servidor (`npm run dev`), luego en el Escritorio:
+> Tras clonar el repo y arrancar en local, abre **http://localhost:5174** para ver la UI completa.
 
-```powershell
-Rename-Item "c:\Users\levia\Desktop\comeback-countdown-hub" "once-countdown"
+---
+
+## 🚀 Arranque en 60 segundos
+
+### Requisitos
+
+- [Node.js](https://nodejs.org/) **≥ 18** (LTS 20+ recomendado)
+- npm **9+**
+
+### 1️⃣ Clonar
+
+```bash
+git clone https://github.com/BluX-Myoui/Once-Countdown.git
+cd Once-Countdown
 ```
 
-Vuelve a abrir `c:\Users\levia\Desktop\once-countdown` en Cursor.
-
----
-
-## Estructura del repositorio
-
-```
-once-countdown/
-├── client/          # Frontend React 19 + Vite (puerto 5174 en dev)
-│   └── src/
-│       ├── api/         # Cliente fetch tipado
-│       ├── components/  # Layout, CountdownHero, EventCard, EventForm
-│       ├── context/     # EventContext (estado global)
-│       ├── hooks/       # useCountdown
-│       └── pages/       # Home, Eventos, Acerca, 404
-├── server/          # API Express (puerto 3001 en dev)
-│   └── src/
-│       ├── routes/      # event.routes.js
-│       ├── controllers/
-│       └── services/    # Memoria + seed THIS IS FOR
-├── api/             # Handler serverless Vercel → Express
-├── docs/            # Idea, diseño, agile, API, despliegue
-├── vercel.json      # Build + rewrites + functions
-└── .vscode/         # PATH Node para terminales en Cursor/VS Code
-```
-
----
-
-## Requisitos
-
-- **Node.js** ≥ 18 (recomendado LTS 20+)
-- **npm** 9+
-
----
-
-## Arranque local
-
-Necesitas **dos terminales** (API + frontend).
-
-### Terminal 1 — API (puerto **3001**)
+### 2️⃣ Terminal A — API (`3001`)
 
 ```bash
 cd server
@@ -85,9 +74,9 @@ npm install
 npm run dev
 ```
 
-Debe mostrar: `ONCE Countdown API → http://localhost:3001`
+✅ Debe aparecer: `ONCE Countdown API → http://localhost:3001`
 
-### Terminal 2 — Frontend (puerto **5174**)
+### 3️⃣ Terminal B — Frontend (`5174`)
 
 ```bash
 cd client
@@ -95,109 +84,236 @@ npm install
 npm run dev
 ```
 
-Abre en el navegador: **http://localhost:5174**
+### 4️⃣ Abrir
 
-> El proxy de Vite redirige `/api` → `http://localhost:3001`. No uses solo el puerto 3001 en desarrollo si quieres hot reload del cliente.
+👉 **http://localhost:5174**
 
-### Scripts desde la raíz (opcional)
+> En desarrollo, Vite hace proxy de `/api` → `localhost:3001`. Usa **5174** para la app; el 3001 solo es la API.
 
-```bash
-npm run dev:server   # API
-npm run dev:client   # Frontend
-npm run build        # Build producción del client → client/dist
-```
-
-### Si `npm` no se reconoce (Windows)
+<details>
+<summary><strong>Windows: si <code>npm</code> no se reconoce</strong></summary>
 
 ```powershell
 $env:Path = "C:\Program Files\nodejs;" + $env:Path
 ```
 
-O cierra y abre de nuevo la terminal / Cursor (ver `.vscode/settings.json`).
+O reinicia Cursor (el repo incluye `.vscode/settings.json` con el PATH de Node).
+
+</details>
+
+### Scripts desde la raíz
+
+```bash
+npm run dev:server   # API
+npm run dev:client   # Frontend
+npm run build        # Build → client/dist
+```
 
 ---
 
-## Rutas de la aplicación
+## 🎯 Funcionalidades destacadas
 
-| Ruta | Página |
-|------|--------|
-| `/` | Inicio — countdown al evento destacado + estadísticas |
-| `/eventos` | Calendario ONCE — listado, filtros, formulario CRUD |
-| `/acerca` | Acerca del proyecto (Fase 5, stack, paleta) |
+### ⏳ Countdown en vivo
+
+El hero de la home muestra el evento **destacado** con dígitos que hacen «tick» cada segundo. Por defecto apunta a la **próxima parada** del tour (orden automático por fecha).
+
+### 🌐 World Tour THIS IS FOR — 44 ciudades
+
+Seed completo basado en el calendario del tour ([referencia Wikipedia](https://en.wikipedia.org/wiki/This_Is_For_World_Tour)):
+
+| Región | Ejemplos |
+|--------|----------|
+| 2025 | Incheon, Osaka, Tokyo Dome, Macau, Bulacan, Singapore, KL, Sydney, Melbourne, Kaohsiung, Hong Kong, Bangkok… |
+| 2026 | Vancouver → Austin (NA) · Taipei · Tokyo National Stadium · Lisboa → **Londres** (cierre) |
+
+Los eventos oficiales del **World Tour 2026** en seed **no se pueden borrar** (protección en cliente y API `403`).
+
+### 🔎 Buscador estilo «sube al top»
+
+- Escribe `espana`, `berlin`, `comeback`…
+- Las coincidencias **se reordenan al inicio** y se resaltan.
+- **Ninguna tarjeta desaparece** — al borrar la búsqueda, vuelve el orden por «próximo en celebrarse».
+
+### 📋 Calendario ONCE (`/eventos`)
+
+- Filtros: Todos · World Tour · Comeback · MV · Fanmeet
+- Lista con **4 tarjetas visibles** sin recorte + scroll
+- Orden: **próximo evento primero**, pasados al final
+- Formulario **Nuevo evento** en 3 pestañas: *Evento → Lugar y fecha → Notas*
+- `OnceSelect` y `OnceDateTimePicker` con tema rosa/dorado
+
+### 🛡️ UX pulida
+
+- Destacar / borrar / crear **sin pantallazo de carga**
+- Hover en tarjetas: solo borde suave (sin que «salten»)
+- Badges por tipo de evento con colores del tour
 
 ---
 
-## API REST (`/api/v1`)
+## 🏗️ Arquitectura
+
+```mermaid
+flowchart LR
+  subgraph Client["React 19 + Vite :5174"]
+    UI[Pages & Components]
+    CTX[EventContext]
+    API_CLIENT[eventApi tipado]
+  end
+  subgraph Server["Express :3001"]
+    R[routes]
+    CTRL[controllers]
+    SVC[event.service + seed]
+  end
+  subgraph Deploy["Vercel"]
+    STATIC[client/dist]
+    FN[api/index.js]
+  end
+  UI --> CTX --> API_CLIENT
+  API_CLIENT -->|/api/v1| R --> CTRL --> SVC
+  STATIC --> UI
+  FN --> Server
+```
+
+| Capa | Tecnología |
+|------|------------|
+| Frontend | React 19, TypeScript, Tailwind CSS 4, React Router 7 |
+| Estado | Context API + hooks (`useCountdown`) |
+| Backend | Node.js, Express, arquitectura routes → controllers → services |
+| Datos | Memoria + seed en `server/src/data/this-is-for-seed.js` |
+| Deploy | Vercel (`vercel.json`: SPA + serverless API) |
+
+---
+
+## 📁 Estructura del repo
+
+```
+Once-Countdown/
+├── client/                 # Frontend (Vite, puerto 5174)
+│   └── src/
+│       ├── api/            # Cliente REST tipado
+│       ├── components/     # Layout, CountdownHero, EventCard, EventForm,
+│       │                   # EventSearchBar, OnceSelect, OnceDateTimePicker
+│       ├── context/        # EventContext
+│       ├── hooks/          # useCountdown
+│       ├── pages/          # Home, Eventos, Acerca, 404
+│       └── utils/          # search, sort, labels, eventRules
+├── server/                 # API Express (puerto 3001)
+│   └── src/
+│       ├── data/           # Seed THIS IS FOR (44 ciudades + extras)
+│       ├── routes/
+│       ├── controllers/
+│       └── services/
+├── api/                    # Handler Vercel → Express
+├── docs/                   # Idea, diseño, agile, API, deploy, retrospectiva
+├── vercel.json
+└── .vscode/                # PATH Node en terminales Cursor/VS Code
+```
+
+---
+
+## 🔌 API REST
+
+Base: `/api/v1`
 
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| `GET` | `/api/v1/health` | Estado del servicio |
-| `GET` | `/api/v1/events` | Listar (query: `type`, `tourName`, `upcoming`) |
-| `GET` | `/api/v1/events/featured` | Evento destacado |
-| `GET` | `/api/v1/events/meta` | Metadatos (tipos, tours) |
-| `GET` | `/api/v1/events/:id` | Un evento |
-| `POST` | `/api/v1/events` | Crear |
-| `PATCH` | `/api/v1/events/:id` | Actualizar |
-| `DELETE` | `/api/v1/events/:id` | Eliminar |
+| `GET` | `/health` | `{ status: "ok", service: "ONCE Countdown API" }` |
+| `GET` | `/events` | Listar (`?type=`, `?tourName=`, `?upcoming=true`) |
+| `GET` | `/events/featured` | Evento destacado (home) |
+| `GET` | `/events/meta` | Tipos y nombres de tour |
+| `GET` | `/events/:id` | Detalle |
+| `POST` | `/events` | Crear evento |
+| `PATCH` | `/events/:id` | Actualizar / destacar |
+| `DELETE` | `/events/:id` | Borrar *(403 si es WT 2026 oficial)* |
 
-Detalle del cliente tipado: [`docs/api-client.md`](docs/api-client.md).
+Documentación del cliente: [`docs/api-client.md`](docs/api-client.md).
 
 ---
 
-## Paleta THIS IS FOR 2026
+## 🎨 Paleta THIS IS FOR 2026
 
 | Token | Hex | Uso |
 |-------|-----|-----|
 | Pink | `#ff2d7a` | Primario, CTAs, acentos |
 | Hot | `#ff5cab` | Gradientes |
-| Magenta | `#b8145c` | Fondos, orbes |
+| Magenta | `#b8145c` | Orbes de fondo |
 | Glow | `#ff9ec8` | Texto destacado |
-| Gold | `#f0c14a` | Tour, chips |
-| Dark | `#0c0610` | Fondo base |
+| Gold | `#f0c14a` | Tour, chips, subtítulos |
+| Dark | `#0c0610` | Fondo |
 | Panel | `#1a0f1f` | Glass panels |
 | Cream | `#fff0f6` | Texto principal |
 
-Fuentes: **Syne** (display), **Outfit** (UI).
+**Fuentes:** [Syne](https://fonts.google.com/specimen/Syne) (display) · [Outfit](https://fonts.google.com/specimen/Outfit) (UI)
 
 ---
 
-## Producción (Vercel)
+## ☁️ Deploy en Vercel
 
-1. Importa este repositorio en [Vercel](https://vercel.com).
-2. Usa el `vercel.json` de la raíz (build `client/dist` + función `api/index.js`).
-3. Tras el deploy, comprueba:
+1. Fork o importa **[BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown)** en [Vercel](https://vercel.com).
+2. El `vercel.json` ya configura build + API serverless.
+3. Comprueba tras el deploy:
    - `/` — UI
-   - `/api/v1/health` — `{ "status": "ok" }`
+   - `/api/v1/health` — health check
    - `/eventos` — CRUD
 
-Guía completa: [`docs/deployment.md`](docs/deployment.md).
+Guía paso a paso: [`docs/deployment.md`](docs/deployment.md).
 
-**Nota:** Los datos viven en memoria en el servidor; un cold start en Vercel puede reiniciar el seed.
+> Los datos están **en memoria**. Un cold start en Vercel puede reiniciar el seed (comportamiento esperado en demo).
 
 ---
 
-## Documentación del proyecto (Fase 5)
+## 📚 Documentación Fase 5
 
-| Archivo | Contenido |
-|---------|-----------|
+| Doc | Contenido |
+|-----|-----------|
 | [`docs/idea.md`](docs/idea.md) | Problema, público, funcionalidades |
-| [`docs/design.md`](docs/design.md) | Arquitectura y flujo de datos |
+| [`docs/design.md`](docs/design.md) | Arquitectura y flujo |
 | [`docs/agile.md`](docs/agile.md) | Kanban / Scrum |
-| [`docs/project-management.md`](docs/project-management.md) | Tablero Trello |
-| [`docs/api-client.md`](docs/api-client.md) | Cliente API tipado |
-| [`docs/deployment.md`](docs/deployment.md) | Despliegue Vercel |
+| [`docs/project-management.md`](docs/project-management.md) | Trello |
+| [`docs/api-client.md`](docs/api-client.md) | Cliente API |
+| [`docs/deployment.md`](docs/deployment.md) | Vercel |
 | [`docs/retrospective.md`](docs/retrospective.md) | Retrospectiva |
 
 ---
 
-## Créditos y disclaimer
+## 🧪 Comandos útiles
 
-- **Creado por:** Blux Myoui (nombre de fan; no vinculado a JYP ni a los artistas).
-- **Inspiración:** TWICE — World Tour «THIS IS FOR» (2026).
-- **Licencia:** Proyecto académico / educativo; no redistribuir assets oficiales de terceros.
+```bash
+# Build de producción (client)
+cd client && npm run build
+
+# Preview del build
+cd client && npm run preview
+
+# Health check (con API levantada)
+curl http://localhost:3001/api/v1/health
+```
 
 ---
 
-## Autor
+## 👤 Autor
 
-**Blux Myoui** — Fase 5 · ONCE Countdown · 2026
+<table>
+  <tr>
+    <td>
+      <strong>Blux Myoui</strong><br/>
+      <sub>Nombre de fan · no oficial</sub><br/><br/>
+      Proyecto educativo — <strong>Fase 5</strong><br/>
+      TWICE · THIS IS FOR · 2026
+    </td>
+    <td>
+      <a href="https://github.com/BluX-Myoui">GitHub @BluX-Myoui</a><br/>
+      <a href="https://github.com/BluX-Myoui/Once-Countdown">Once-Countdown</a>
+    </td>
+  </tr>
+</table>
+
+---
+
+<div align="center">
+
+**¿Eres ONCE?** Clona el repo, levanta las dos terminales y no te pierdas la próxima parada del tour.
+
+💗 *THIS IS FOR — World Tour Hub*
+
+</div>

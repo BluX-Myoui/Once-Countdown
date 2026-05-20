@@ -28,8 +28,22 @@ function normalizeEvent(raw) {
 
 let events = SEED.map(normalizeEvent);
 
-function sortByDate(list) {
-    return [...list].sort((a, b) => new Date(a.startsAt) - new Date(b.startsAt));
+function sortByNextCelebration(list) {
+    const now = Date.now();
+    return [...list].sort((a, b) => {
+        const aT = new Date(a.startsAt).getTime();
+        const bT = new Date(b.startsAt).getTime();
+        const aPast = aT < now;
+        const bPast = bT < now;
+        if (aPast !== bPast) return aPast ? 1 : -1;
+        if (!aPast) return aT - bT;
+        return bT - aT;
+    });
+}
+
+function isProtectedFromDelete(event) {
+    if (!event.official || event.type !== 'world_tour') return false;
+    return new Date(event.startsAt).getFullYear() >= 2026;
 }
 
 function obtenerTodas(filtros = {}) {
@@ -44,7 +58,7 @@ function obtenerTodas(filtros = {}) {
         const now = Date.now();
         list = list.filter((e) => new Date(e.startsAt).getTime() > now);
     }
-    return sortByDate(list);
+    return sortByNextCelebration(list);
 }
 
 function obtenerPorId(id) {
@@ -110,6 +124,11 @@ function actualizarEvento(id, data) {
 function eliminarEvento(id) {
     const index = events.findIndex((e) => e.id === id);
     if (index < 0) throw new Error('NOT_FOUND');
+    if (isProtectedFromDelete(events[index])) {
+        const err = new Error('FORBIDDEN');
+        err.details = 'Los eventos oficiales del World Tour 2026 no se pueden borrar';
+        throw err;
+    }
     events.splice(index, 1);
 }
 

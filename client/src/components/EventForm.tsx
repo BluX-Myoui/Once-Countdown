@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react';
 import type { EventType } from '../types/event';
-import { DateTimeField } from './DateTimeField';
+import { TYPE_LABELS } from '../utils/labels';
+import { OnceDateTimePicker } from './OnceDateTimePicker';
+import { OnceSelect } from './OnceSelect';
 
 interface EventFormProps {
   onSubmit: (data: {
@@ -24,6 +26,10 @@ const TABS: { id: FormTab; label: string }[] = [
   { id: 'lugar', label: 'Lugar y fecha' },
   { id: 'notas', label: 'Notas' }
 ];
+
+const TYPE_OPTIONS: { value: EventType; label: string }[] = (
+  ['world_tour', 'comeback', 'mv_release', 'fanmeet', 'other'] as EventType[]
+).map((value) => ({ value, label: TYPE_LABELS[value] }));
 
 export function EventForm({ onSubmit }: EventFormProps) {
   const [tab, setTab] = useState<FormTab>('evento');
@@ -115,20 +121,13 @@ export function EventForm({ onSubmit }: EventFormProps) {
                 placeholder="Ej. THIS IS FOR — Madrid"
               />
             </label>
-            <label className="block text-[0.92rem] sm:text-sm">
-              <span className="text-white/60">Tipo</span>
-              <select
-                value={type}
-                onChange={(e) => setType(e.target.value as EventType)}
-                className={fieldClass}
-              >
-                <option value="world_tour">World Tour</option>
-                <option value="comeback">Comeback</option>
-                <option value="mv_release">MV</option>
-                <option value="fanmeet">Fanmeet</option>
-                <option value="other">Otro</option>
-              </select>
-            </label>
+            <OnceSelect
+              label="Tipo"
+              value={type}
+              options={TYPE_OPTIONS}
+              onChange={setType}
+              className="block text-[0.92rem] sm:text-sm"
+            />
             <label className="block text-[0.92rem] sm:text-sm">
               <span className="text-white/60">Tour</span>
               <input value={tourName} onChange={(e) => setTourName(e.target.value)} className={fieldClass} />
@@ -138,10 +137,7 @@ export function EventForm({ onSubmit }: EventFormProps) {
 
         {tab === 'lugar' && (
           <div className="space-y-3 animate-in">
-            <label className="block text-[0.92rem] sm:text-sm">
-              <span className="text-white/60">Fecha y hora</span>
-              <DateTimeField required value={startsAt} onChange={setStartsAt} />
-            </label>
+            <OnceDateTimePicker required value={startsAt} onChange={setStartsAt} />
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="block text-[0.92rem] sm:text-sm">
                 <span className="text-white/60">Ciudad</span>

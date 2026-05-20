@@ -3,17 +3,26 @@ import type { FanEvent } from '../types/event';
 import { getCountdown } from '../utils/countdown';
 import { HighlightText } from '../utils/highlight';
 import { scoreEvent } from '../utils/searchEvents';
-import { TYPE_LABELS, TYPE_STYLES } from '../utils/labels';
+import { isProtectedFromDelete } from '../utils/eventRules';
+import { TYPE_LABELS } from '../utils/labels';
 
 interface EventCardProps {
   event: FanEvent;
   onDelete: (id: string) => void;
   onFeature: (id: string) => void;
+  featuringId?: string | null;
   searchQuery?: string;
   style?: CSSProperties;
 }
 
-export function EventCard({ event, onDelete, onFeature, searchQuery = '', style }: EventCardProps) {
+export function EventCard({
+  event,
+  onDelete,
+  onFeature,
+  featuringId = null,
+  searchQuery = '',
+  style
+}: EventCardProps) {
   const cd = getCountdown(event.startsAt);
   const date = new Date(event.startsAt).toLocaleString('es-ES', {
     dateStyle: 'medium',
@@ -21,22 +30,24 @@ export function EventCard({ event, onDelete, onFeature, searchQuery = '', style 
   });
   const location = [event.city, event.country].filter(Boolean).join(', ');
   const isTopMatch = searchQuery.trim().length > 0 && scoreEvent(event, searchQuery) > 0;
+  const isFeaturing = featuringId === event.id;
+  const protectedEvent = isProtectedFromDelete(event);
 
   return (
     <article
       style={style}
-      className={`glass-for card-lift card-min-fluid stagger-card flex min-w-0 flex-col gap-fluid rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)] ${
+      className={`glass-for card-min-fluid event-card flex min-w-0 flex-col gap-fluid rounded-[var(--radius-md)] p-[clamp(1rem,1.8vw,1.35rem)] ${
         isTopMatch ? 'card-search-hit' : ''
-      }`}
+      } ${event.featured ? 'event-card--featured' : ''}`}
     >
       <div className="flex min-w-0 flex-wrap items-start justify-between gap-fluid">
-        <span className={`badge-chip rounded-full border px-3 py-1 text-xs font-bold ${TYPE_STYLES[event.type]}`}>
+        <span className={`badge-chip badge-type badge-type--${event.type}`}>
           {TYPE_LABELS[event.type]}
         </span>
         {event.featured && (
           <span className="text-xs font-bold uppercase tracking-wider text-gradient-gold">Destacado</span>
         )}
-        {isTopMatch && (
+        {isTopMatch && !event.featured && (
           <span className="text-[0.65rem] font-bold uppercase tracking-wider text-[var(--color-for-gold)]">
             Coincide
           </span>
@@ -62,19 +73,28 @@ export function EventCard({ event, onDelete, onFeature, searchQuery = '', style 
         {!event.featured && (
           <button
             type="button"
+            disabled={isFeaturing}
             onClick={() => onFeature(event.id)}
-            className="btn-accent rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold text-[var(--color-for-glow)]"
+            className={`btn-accent rounded-[var(--radius-sm)] px-3.5 py-2 text-xs font-semibold text-[var(--color-for-glow)] ${
+              isFeaturing ? 'opacity-70' : ''
+            }`}
           >
-            Destacar
+            {isFeaturing ? 'Destacando...' : 'Destacar'}
           </button>
         )}
-        <button
-          type="button"
-          onClick={() => onDelete(event.id)}
-          className="btn-danger rounded-[var(--radius-sm)] border border-red-400/40 px-3.5 py-2 text-xs font-semibold text-red-300"
-        >
-          Borrar
-        </button>
+        {!protectedEvent ? (
+          <button
+            type="button"
+            onClick={() => onDelete(event.id)}
+            className="btn-danger rounded-[var(--radius-sm)] border border-red-400/40 px-3.5 py-2 text-xs font-semibold text-red-300"
+          >
+            Borrar
+          </button>
+        ) : (
+          <span className="px-2 py-2 text-[0.68rem] text-white/35" title="Evento oficial WT 2026">
+            Oficial
+          </span>
+        )}
       </div>
     </article>
   );
