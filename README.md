@@ -16,7 +16,7 @@
 
 <br />
 
-**[Ver demo en vivo](https://once-countdown.vercel.app)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)** · [Demo local](http://localhost:5174)
+**[Ver demo en vivo](https://once-countdown.vercel.app)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)**
 
 <br />
 
@@ -48,8 +48,7 @@ Inspirado en la energía del tour **THIS IS FOR**, con UI glassmorphism, orbes a
 |--------|---------|
 | Countdown hero al evento destacado + stats del tour | Listado, filtros, buscador, CRUD y formulario por pestañas |
 
-> **Produccion:** https://once-countdown.vercel.app — abre el enlace y listo, sin instalar nada.  
-> En local: clona el repo y abre **http://localhost:5174** (API en `:3001`).
+> **Demo:** https://once-countdown.vercel.app — abre el enlace y listo, sin instalar nada.
 
 ---
 
@@ -85,11 +84,11 @@ npm install
 npm run dev
 ```
 
-### 4️⃣ Abrir
+### 4️⃣ Abrir en el navegador
 
-👉 **http://localhost:5174**
+Con las dos terminales en marcha, Vite muestra la URL local (por defecto puerto **5174**). La API corre en **3001**.
 
-> En desarrollo, Vite hace proxy de `/api` → `localhost:3001`. Usa **5174** para la app; el 3001 solo es la API.
+> Si no arranca en local, usa la demo en produccion: https://once-countdown.vercel.app
 
 <details>
 <summary><strong>Windows: si <code>npm</code> no se reconoce</strong></summary>
@@ -292,7 +291,7 @@ curl http://localhost:3001/api/v1/health
 
 <div align="center">
 
-**¿Eres ONCE?** [Abre la demo](https://once-countdown.vercel.app) o clona el repo y levanta las dos terminales en local.
+**¿Eres ONCE?** [Abre la demo](https://once-countdown.vercel.app)
 
 💗 *THIS IS FOR — World Tour Hub*
 
