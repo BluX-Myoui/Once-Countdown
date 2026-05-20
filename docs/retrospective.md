@@ -2,7 +2,7 @@
 
 ## Aprendizajes
 
-- Definir una idea propia (fan hub) distinta de TaskFlow clarifica la Fase 5
+- Definir una idea propia (fan hub) distinta de TaskFlow clarifica el alcance del proyecto
 - Countdown en tiempo real con hooks + ISO dates
 - Misma arquitectura por capas que en practicas anteriores acelera el desarrollo
 

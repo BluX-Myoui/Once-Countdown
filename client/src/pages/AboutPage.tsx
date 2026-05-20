@@ -3,11 +3,9 @@ export function AboutPage() {
     <article className="glass-for panel-pad-fluid panel-radius-lg animate-in max-w-3xl space-y-[clamp(1.25rem,2vw,1.75rem)]">
       <h2 className="font-display text-page-fluid font-extrabold text-gradient-hero">Acerca del proyecto</h2>
       <p className="text-[0.94rem] leading-relaxed text-white/75 sm:text-base">
-        <strong className="text-gradient-glow">ONCE Countdown</strong> es el proyecto de{' '}
-        <strong className="text-gradient-gold">Blux Myoui</strong> (nombre de fan, no oficial) para la
-        Fase 5: un panel para no perder fechas del world tour{' '}
-        <strong className="text-[var(--color-for-gold)]">«THIS IS FOR»</strong> (2026), comebacks y MVs.
-        Proyecto educativo sin afiliación a JYP Entertainment.
+        <strong className="text-gradient-glow">ONCE Countdown</strong> es un panel fan para no perder
+        fechas del world tour <strong className="text-[var(--color-for-gold)]">«THIS IS FOR»</strong>{' '}
+        (2026), comebacks y MVs. Proyecto no oficial sin afiliación a JYP Entertainment.
       </p>
       <section className="animate-in-delay-1">
         <h3 className="font-display text-section-fluid font-bold text-gradient-gold">Stack</h3>

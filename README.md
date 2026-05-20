@@ -16,7 +16,7 @@
 
 <br />
 
-**[Demo local](http://localhost:5174)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)** · **Fase 5** · por [**Blux Myoui**](https://github.com/BluX-Myoui)
+**[Demo local](http://localhost:5174)** · **[Repositorio](https://github.com/BluX-Myoui/Once-Countdown)**
 
 <br />
 
@@ -30,7 +30,7 @@
 
 ## ✨ ¿Qué es ONCE Countdown?
 
-**ONCE Countdown** es mi proyecto de **Fase 5**: un hub web para fans (ONCE) que centraliza fechas del world tour **THIS IS FOR**, comebacks, estrenos de MV y eventos personales, con:
+**ONCE Countdown** es un hub web para fans (ONCE) que centraliza fechas del world tour **THIS IS FOR**, comebacks, estrenos de MV y eventos personales, con:
 
 - ⏱️ **Cuenta atrás en tiempo real** al evento destacado (días, horas, minutos, segundos).
 - 🌍 **44 paradas del World Tour** precargadas (Asia/Oceanía 2025 + Norteamérica, Taipei, Tokyo Stadium y Europa 2026).
@@ -262,7 +262,7 @@ Guía paso a paso: [`docs/deployment.md`](docs/deployment.md).
 
 ---
 
-## 📚 Documentación Fase 5
+## 📚 Documentación
 
 | Doc | Contenido |
 |-----|-----------|
@@ -288,25 +288,6 @@ cd client && npm run preview
 # Health check (con API levantada)
 curl http://localhost:3001/api/v1/health
 ```
-
----
-
-## 👤 Autor
-
-<table>
-  <tr>
-    <td>
-      <strong>Blux Myoui</strong><br/>
-      <sub>Nombre de fan · no oficial</sub><br/><br/>
-      Proyecto educativo — <strong>Fase 5</strong><br/>
-      TWICE · THIS IS FOR · 2026
-    </td>
-    <td>
-      <a href="https://github.com/BluX-Myoui">GitHub @BluX-Myoui</a><br/>
-      <a href="https://github.com/BluX-Myoui/Once-Countdown">Once-Countdown</a>
-    </td>
-  </tr>
-</table>
 
 ---
 

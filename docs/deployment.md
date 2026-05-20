@@ -10,7 +10,7 @@ El `vercel.json` de la raiz:
 
 ## Pasos
 
-1. Repositorio: [BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown) (autor: Blux Myoui).
+1. Repositorio: [BluX-Myoui/Once-Countdown](https://github.com/BluX-Myoui/Once-Countdown).
 2. Importa en Vercel (preset Other).
 3. Deploy automatico en cada push a `main`.
 

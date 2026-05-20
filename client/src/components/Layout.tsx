@@ -46,9 +46,7 @@ export function Layout() {
       </main>
 
       <footer className="shell-x py-[clamp(2rem,4vw,3.5rem)] text-center text-[0.7rem] text-white/40 sm:text-xs">
-        <span className="text-[var(--color-for-glow)]/80">Blux Myoui</span>
-        <span className="mx-1.5 text-white/25">·</span>
-        Proyecto fan no oficial · Fase 5 · TWICE «THIS IS FOR» 2026
+        Proyecto fan no oficial · TWICE «THIS IS FOR» 2026
       </footer>
     </div>
   );

@@ -1,6 +1,6 @@
 # Idea del proyecto — ONCE Countdown
 
-**Autor (fan):** Blux Myoui — nombre no oficial, proyecto educativo Fase 5.
+Proyecto fan no oficial — sin afiliación a JYP Entertainment.
 
 ## Problema
 
