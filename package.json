@@ -1,0 +1,14 @@
+{
+  "name": "comeback-countdown-hub",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ONCE Countdown Hub — Fase 5 TWICE THIS IS FOR 2026",
+  "scripts": {
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

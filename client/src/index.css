@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-ui: "Outfit", system-ui, sans-serif;
+  --color-for-pink: #ff2d7a;
+  --color-for-hot: #ff5cab;
+  --color-for-magenta: #b8145c;
+  --color-for-dark: #0c0610;
+  --color-for-panel: #1a0f1f;
+  --color-for-glow: #ff9ec8;
+  --color-for-gold: #f0c14a;
+  --color-for-cream: #fff0f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-ui);
+  background: var(--color-for-dark);
+  color: var(--color-for-cream);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.glass-for {
+  background: color-mix(in srgb, var(--color-for-panel) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-for-pink) 35%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.glow-ring {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-for-pink) 40%, transparent),
+    0 0 48px color-mix(in srgb, var(--color-for-pink) 25%, transparent);
+}
+
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 10% 0%, color-mix(in srgb, var(--color-for-magenta) 55%, transparent), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 100%, color-mix(in srgb, var(--color-for-pink) 40%, transparent), transparent),
+    radial-gradient(ellipse 30% 25% at 50% 50%, color-mix(in srgb, var(--color-for-gold) 12%, transparent), transparent),
+    var(--color-for-dark);
+}
